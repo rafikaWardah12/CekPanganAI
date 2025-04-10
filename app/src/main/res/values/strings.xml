@@ -68,4 +68,6 @@
     <string name="description_process_detect">Gambar Anda sedang di proses oleh sistem. Tetap di lama ini sampai proses selesai </string>
 
     <string name="navigate_back">Kembali</string>
+
+    <string name="upload_from_gallery">Upload dari galeri</string>
 </resources>

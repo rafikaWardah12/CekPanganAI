@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">CekPanganAI</string>
+    <string name="logo_firstname">CekPangan</string>
+    <string name="logo_lastname">AI</string>
+
+    <string name="onboarding">On Boarding</string>
+    <string name="h2_onboarding_1">Selamat datang di Cek Pangan AI</string>
+    <string name="h3_onboarding_1">Temukan informasi akurat dan cepat tentang kualitas pangan menggunakan teknologi AI untuk memastikan makanan yang aman dan sehat bagi keluarga Anda.</string>
+    <string name="h2_onboarding_2">Deteksi Makanan dengan Sekali Unggah</string>
+    <string name="h3_onboarding_2">Deteksi makanan dengan mudah hanya dengan sekali unggah! Teknologi AI kami akan mengidentifikasi jenis dan kualitas makanan secara cepat dan akurat</string>
+
+    <string name="headline_form_profile">Berikan Kami Beberapa Informasi Diri</string>
+    <string name="name">Nama</string>
+    <string name="age">Usia</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="gender_boy">Laki-laki </string>
+    <string name="gender_girl">Perempuan </string>
+    <string name="height">Tinggi Badan </string>
+    <string name="weight">Berat Badan</string>
+
+    <string name="start">Mulai</string>
+    <string name="input">Masukkan</string>
+    <string name="save">Simpan</string>
+    <string name="next">Selanjutnya</string>
+
+    <string name="h2_bmi_score">Skor Anda</string>
+    <string name="bmi">Body Mass Index (BMI)</string>
+    <string name="h4_bmi_score">Pelajari dan catat kalori kabutuhan anda dengan CekPanganAI</string>
+
+    <string name="profile">Profil</string>
+    <string name="current_day">Hari Ini</string>
+    <string name="h4_dashboard">, rencana kesehatan yang lebih baik sudah siap!</string>
+
+    <string name="dashboard">Beranda</string>
+    <string name="detect">Deteksi</string>
+    <string name="history">Riwayat</string>
+    <string name="result">Hasil Deteksi</string>
+    <string name="calorie">Kalori</string>
+    <string name="score_calorie">Jumlah Kalori</string>
+    <string name="score_bmi">Skor BMI</string>
+    <string name="carbo">Karbohidrat</string>
+    <string name="protein">Protein</string>
+    <string name="fatty">Lemak</string>
+    <string name="fiber">Serat</string>
+
+    <string name="micronutrien">Kandungan Mikronutrien</string>
+    <string name="colestrol">Kolestrol</string>
+    <string name="glukosa">Gula</string>
+    <string name="sodium">Sodium</string>
+    <string name="calium">Kalium</string>
+
+    <string name="edit">Ubah</string>
+    <string name="serving">Serving</string>
+    <string name="hide">Sembunyikan</string>
+    <string name="show">Tampilkan</string>
+
+    <string name="add">Tambahkan Lagi</string>
+    <string name="total_nutrition">Total Nutrisi</string>
+    <string name="total">Total</string>
+
+    <string name="edit_name">Perbarui Nama</string>
+    <string name="title_name">Judul Makanan</string>
+    <string name="title_portion">Perbarui Porsi</string>
+    <string name="description_name">Deskripsi Makanan</string>
+
+    <string name="edit_bmi">Hitung BMI</string>
+    <string name="close">Keluar</string>
+    <string name="description_process_detect">Gambar Anda sedang di proses oleh sistem. Tetap di lama ini sampai proses selesai </string>
+
+    <string name="navigate_back">Kembali</string>
+</resources>

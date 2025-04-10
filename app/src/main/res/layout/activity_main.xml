@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/view_finder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:scaleType="fillStart" />
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_close"
+        android:tint="@android:color/white"
+        android:background="@color/purple_200" />
+
+    <TextView
+        android:id="@+id/inferenceTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100ms" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_go_to_dashboard"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:background="@drawable/rounded_button_text"-->
+    <!--        android:gravity="center"-->
+    <!--        android:paddingHorizontal="20dp"-->
+    <!--        android:paddingVertical="10dp"-->
+    <!--        android:text="Go to Dashboard"-->
+    <!--        android:textColor="@color/background"-->
+    <!--        android:textSize="16dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageButton
+        android:id="@+id/btn_switch_camera"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="50dp"
+        android:background="@drawable/rounded_button"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_switch_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/view_finder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <com.example.trashdetection.presentation.Deteksi.OverlayView-->
+    <!--        android:id="@+id/overlay"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:translationZ="5dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintDimensionRatio="3:4"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.5" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

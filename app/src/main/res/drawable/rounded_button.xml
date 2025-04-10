@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--</selector>-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white" /> <!-- Warna latar belakang -->
+    <corners android:radius="500dp" /> <!-- Membuat bentuk bulat -->
+    <stroke
+        android:width="3dp"
+        android:color="@color/black" /> <!-- Warna dan ketebalan border -->
+</shape>

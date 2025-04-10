@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" /> <!-- Latar belakang transparan -->
+            <stroke
+                android:width="2dp"
+                android:color="@color/background" /> <!-- Warna border -->
+            <corners android:radius="25dp" /> <!-- Membuat sudut membulat -->
+        </shape>
+    </item>
+</selector>

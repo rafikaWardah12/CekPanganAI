@@ -6,15 +6,17 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.cekpanganai.R
+import com.example.cekpanganai.presentation.detect.camera.BoundingBox
 
 class OverlayView(context: Context?, attrs: AttributeSet) : View(context, attrs) {
     private var boxPaint = Paint()
     private var textBackgroundPaint = Paint()
     private var textPaint = Paint()
-//    private var results = listOf<BoundingBox>()
+    private var results = listOf<BoundingBox>()
 
     //Bentuk shape nya
     private var bounds = Rect()
@@ -45,37 +47,39 @@ class OverlayView(context: Context?, attrs: AttributeSet) : View(context, attrs)
         boxPaint.style = Paint.Style.STROKE
     }
 
-//    override fun draw(canvas: Canvas) {
-//        super.draw(canvas)
-//
-//        results.forEach {
-//            val left = it.x1 * width
-//            val top = it.y1 * height
-//            val right = it.x2 * width
-//            val bottom = it.y2 * height
-//
-//            canvas.drawRect(left, top, right, bottom, boxPaint)
-//            val drawableText = it.clsName
-//
-//            textBackgroundPaint.getTextBounds(drawableText, 0, drawableText.length, bounds)
-//            val textWidth = bounds.width()
-//            val textHeight = bounds.height()
-//            canvas.drawRect(
-//                left,
-//                top,
-//                left + textWidth + BOUNDING_RECT_TEXT_PADDING,
-//                top + textHeight + BOUNDING_RECT_TEXT_PADDING,
-//                textBackgroundPaint
-//            )
-//            canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
-//
-//        }
-//    }
-//
-//    fun setResults(boundingBox: List<BoundingBox>) {
-//        results = boundingBox
-//        invalidate()
-//    }
+    override fun draw(canvas: Canvas) {
+        super.draw(canvas)
+
+        results.forEach {
+            val left = it.x1 * width
+            val top = it.y1 * height
+            val right = it.x2 * width
+            val bottom = it.y2 * height
+            canvas.drawRect(left, top, right, bottom, boxPaint)
+            val drawableText = it.clsName
+
+            textBackgroundPaint.getTextBounds(drawableText, 0, drawableText.length, bounds)
+            val textWidth = bounds.width()
+            val textHeight = bounds.height()
+            canvas.drawRect(
+                left,
+                top,
+                left + textWidth + BOUNDING_RECT_TEXT_PADDING,
+                top + textHeight + BOUNDING_RECT_TEXT_PADDING,
+                textBackgroundPaint
+            )
+            canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
+            Log.d("BoxUI", "Draw ${it.clsName} at (${it.x1}, ${it.y1}, ${it.x2}, ${it.y2})")
+
+        }
+        Log.d("DRAW", "Drawing ${results.size} boxes")
+        Log.d("DRAW", "Canvas size: $width x $height")
+    }
+
+    fun setResults(boundingBox: List<BoundingBox>) {
+        results = boundingBox
+        invalidate()
+    }
 
     companion object {
         private const val BOUNDING_RECT_TEXT_PADDING = 8

@@ -26,7 +26,7 @@ import com.example.cekpanganai.ui.theme.TextPrimary
 import com.example.cekpanganai.ui.theme.TextSecondary
 
 @Composable
-fun HeaderHistory(modifier: Modifier = Modifier, label: String, serving: String, description: String,) {
+fun HeaderHistory(modifier: Modifier = Modifier, label: String, serving: String, description: String, timestamp: String) {
     Column {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -62,9 +62,15 @@ fun HeaderHistory(modifier: Modifier = Modifier, label: String, serving: String,
 
             }
         }
-        Row {
+        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = description,
+                style = MaterialTheme.typography.bodySmall,
+                color = TextSecondary,
+                fontWeight = FontWeight.Normal
+            )
+            Text(
+                text = timestamp,
                 style = MaterialTheme.typography.bodySmall,
                 color = TextSecondary,
                 fontWeight = FontWeight.Normal
@@ -76,5 +82,5 @@ fun HeaderHistory(modifier: Modifier = Modifier, label: String, serving: String,
 @Preview (showBackground = true)
 @Composable
 private fun Test() {
-    HeaderHistory(label = "zzzzz", serving = "19", description = "bbbbbb")
+    HeaderHistory(label = "zzzzz", serving = "19", description = "bbbbbb", timestamp = "17 april 2024")
 }

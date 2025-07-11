@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cekpanganai.R
 import com.example.cekpanganai.data.network.fakeData.FakeDataNutrition
+import com.example.cekpanganai.domain.model.DataItemNutrition
 import com.example.cekpanganai.presentation.component.CustomButton
 import com.example.cekpanganai.presentation.component.ItemNutrition
 import com.example.cekpanganai.ui.theme.CekPanganAITheme
@@ -47,9 +48,15 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CardTotalResult(modifier: Modifier = Modifier, serving: String = "0", onSave: () -> Unit) {
+fun CardTotalResult(
+    modifier: Modifier = Modifier,
+    onSave: () -> Unit = {},
+    itemsShow: List<DataItemNutrition>,
+    metricServingAmount: Int?,
+    noAction: Boolean = true,
+) {
     var showFullInfo by remember { mutableStateOf(false) }
-    val itemsShow = if (showFullInfo) FakeDataNutrition.result else FakeDataNutrition.result.take(3)
+    val itemsShow = if (showFullInfo) itemsShow else itemsShow.take(3)
 
     val scaffoldState = rememberBottomSheetScaffoldState()
     val coroutineScope = rememberCoroutineScope()
@@ -106,7 +113,7 @@ fun CardTotalResult(modifier: Modifier = Modifier, serving: String = "0", onSave
                         modifier = modifier.size(28.dp)
                     )
                     Text(
-                        text = stringResource(id = R.string.total) + " : $serving gr",
+                        text = stringResource(id = R.string.total) + " : $metricServingAmount gr",
                         modifier = Modifier.padding(horizontal = Padding.large),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
@@ -145,18 +152,20 @@ fun CardTotalResult(modifier: Modifier = Modifier, serving: String = "0", onSave
                     )
                 }
                 Spacer(modifier = Modifier.height(Spacing.medium))
-                CustomButton(
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_save),
-                            contentDescription = stringResource(id = R.string.save)
-                        )
-                    },
-                    text = stringResource(id = R.string.save),
-                    onClick = { onSave() },
-                    isWide = true,
-                    isRounded = true,
-                )
+                if (noAction == false) {
+                    CustomButton(
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_save),
+                                contentDescription = stringResource(id = R.string.save)
+                            )
+                        },
+                        text = stringResource(id = R.string.save),
+                        onClick = { onSave() },
+                        isWide = true,
+                        isRounded = true,
+                    )
+                }
             }
         }
     )
@@ -167,6 +176,6 @@ fun CardTotalResult(modifier: Modifier = Modifier, serving: String = "0", onSave
 @Composable
 private fun test() {
     CekPanganAITheme {
-        CardTotalResult(onSave = {})
+        CardTotalResult(onSave = {}, itemsShow = emptyList(), metricServingAmount = 1)
     }
 }

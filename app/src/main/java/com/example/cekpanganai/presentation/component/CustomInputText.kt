@@ -1,5 +1,6 @@
 package com.example.cekpanganai.presentation.component
 
+import android.inputmethodservice.Keyboard
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -28,6 +30,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
@@ -59,10 +64,9 @@ fun CustomInputText(
     isObsecure: Boolean = false,
     label: String,
     isBox: Boolean = false,
-    boxItem: List<BoxItem> = emptyList()
-//    labelBox: List<String> = emptyList(),
-//    iconBox: List<Int> = emptyList(),
-//    totalBox: Int = labelBox.size,
+    boxItem: List<BoxItem> = emptyList(),
+    onBoxSelected: ((String) -> Unit)? = null,
+    isNumber: Boolean = false,
 ) {
 //    var password = remember { TextFieldState() }
     var showPassword by remember { mutableStateOf(false) }
@@ -70,7 +74,11 @@ fun CustomInputText(
 
     Column {
         Row {
-            Text(text = label, style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium), color = TextPrimary)
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium),
+                color = TextPrimary
+            )
             Spacer(modifier = Modifier.width(3.dp))
             if (isRequired) {
                 Text(text = "*", color = TextError, style = MaterialTheme.typography.labelSmall)
@@ -82,7 +90,8 @@ fun CustomInputText(
                     .fillMaxWidth()
                     .clickable { onClick() }
                     .padding(start = Padding.small),
-                value = value, onValueChange = onValue, colors =
+                value = value, onValueChange = onValue,
+                colors =
                 OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = OutlineFocused,
                     unfocusedBorderColor = Outline,
@@ -123,19 +132,30 @@ fun CustomInputText(
                             Icon(imageVector = icon, contentDescription = description)
                         }
                     }
-                }
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType =
+                    if (isNumber) KeyboardType.Number else KeyboardType.Text,
+                    imeAction = ImeAction.Done
+                )
             )
         }
         Spacer(modifier = Modifier.height(6.dp))
         if (isBox) {
             var isSelected by remember { mutableStateOf(-1) }
-            Row(horizontalArrangement = Arrangement.spacedBy(Spacing.large), modifier = Modifier.padding(bottom = Spacing.large, start = Spacing.extraSmall)) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(Spacing.large),
+                modifier = Modifier.padding(bottom = Spacing.large, start = Spacing.extraSmall)
+            ) {
                 boxItem.forEachIndexed { index, item ->
                     BoxItem(
                         corner = corner,
                         labelBox = item.labelBox,
                         isSelected = isSelected == index,
-                        onClick = { isSelected = index },
+                        onClick = {
+                            isSelected = index
+                            onBoxSelected?.invoke(item.labelBox)
+                        },
                         iconBox = item.iconBox ?: R.drawable.ic_add_reaction,
                     )
                 }

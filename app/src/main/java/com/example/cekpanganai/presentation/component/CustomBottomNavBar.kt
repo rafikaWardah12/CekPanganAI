@@ -1,5 +1,6 @@
 package com.example.cekpanganai.presentation.component
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,9 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
@@ -22,14 +21,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +34,7 @@ import androidx.navigation.NavController
 import com.example.cekpanganai.MainViewModel
 import com.example.cekpanganai.R
 import com.example.cekpanganai.common.navigation_utils.Destination
+import com.example.cekpanganai.presentation.detect.camera.Camera
 import com.example.cekpanganai.ui.utils.Padding
 import com.example.cekpanganai.ui.theme.GreenPrimary
 import com.example.cekpanganai.ui.theme.Outline
@@ -53,6 +49,7 @@ fun CustomBottomNavBar(
     navController: NavController
 ) {
     val currentDestination = navController.currentDestination?.route
+    val context = LocalContext.current
 
     Box(modifier = modifier.background(Color.Transparent)) {
         BottomAppBar(
@@ -83,7 +80,11 @@ fun CustomBottomNavBar(
             )
         }
         FloatingActionButton(
-            onClick = { mainViewModel.onNavigateToDetect() },
+//            onClick = { mainViewModel.onNavigateToDetect() },
+            onClick = {
+                val intent = Intent(context, Camera::class.java)
+                context.startActivity(intent)
+            },
             containerColor = GreenPrimary,
             shape = CircleShape,
             modifier = Modifier

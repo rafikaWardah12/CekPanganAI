@@ -66,18 +66,27 @@ fun CustomDialog(
                     .fillMaxWidth()
             ) {
                 IconButton(onClick = { onDismiss() }, modifier.align(Alignment.End)) {
-                    Icon(painter = painterResource(id = R.drawable.ic_close), contentDescription = stringResource(
-                        id = R.string.close),)
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_close),
+                        contentDescription = stringResource(
+                            id = R.string.close
+                        ),
+                    )
                 }
                 header()
                 Spacer(modifier = Modifier.height(Spacing.large))
                 body()
-                CustomButton(text = stringResource(id = R.string.save), onClick = { /*TODO*/ }, isWide = true, isRounded = true, leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_save),
-                        contentDescription = stringResource(id = R.string.save)
-                    )
-                }
+                CustomButton(
+                    text = stringResource(id = R.string.save),
+                    onClick = { onConfirm() },
+                    isWide = true,
+                    isRounded = true,
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_save),
+                            contentDescription = stringResource(id = R.string.save)
+                        )
+                    }
                 )
                 Spacer(modifier = Modifier.height(Spacing.large))
             }
@@ -88,6 +97,7 @@ fun CustomDialog(
 @Preview(showBackground = true)
 @Composable
 private fun test() {
-    CustomDialog(onDismiss = { /*TODO*/ }, onConfirm = {}, header = { HeaderCard(title = stringResource(id = R.string.edit_name), icon = R.drawable.ic_edit )
+    CustomDialog(onDismiss = { /*TODO*/ }, onConfirm = {}, header = {
+        HeaderCard(title = stringResource(id = R.string.edit_name), icon = R.drawable.ic_edit)
     }, body = { BodyEditName() })
 }

@@ -26,7 +26,14 @@ import com.example.cekpanganai.ui.theme.GreenPrimary
 import com.example.cekpanganai.ui.theme.TextSecondary
 
 @Composable
-fun HeaderResult(modifier: Modifier = Modifier, label: String, serving: String, onClick: () -> Unit) {
+fun HeaderResult(
+    modifier: Modifier = Modifier,
+    label: String,
+    serving: String,
+    onClickPortion: () -> Unit = {},
+    onClickFood: () -> Unit = {},
+    notAction: Boolean = true
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -49,15 +56,18 @@ fun HeaderResult(modifier: Modifier = Modifier, label: String, serving: String, 
                 fontWeight = FontWeight.SemiBold
             )
             Spacer(modifier = Modifier.width(4.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ic_edit),
-                contentDescription = stringResource(
-                    id = R.string.edit
-                ),
-                tint = BluePrimary
-            )
+            if (notAction == false) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_edit),
+                    contentDescription = stringResource(
+                        id = R.string.edit
+                    ),
+                    tint = BluePrimary,
+                    modifier = modifier.clickable { onClickFood() }
+                )
+            }
         }
-        Row(modifier = modifier.clickable { onClick() }) {
+        Row(modifier = if (notAction == false) modifier.clickable { onClickPortion() } else modifier) {
             Text(
                 text = serving + "gr",
                 style = MaterialTheme.typography.bodyLarge,
@@ -65,13 +75,15 @@ fun HeaderResult(modifier: Modifier = Modifier, label: String, serving: String, 
                 fontWeight = FontWeight.SemiBold
             )
             Spacer(modifier = Modifier.width(4.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ic_serving),
-                contentDescription = stringResource(
-                    id = R.string.serving
-                ),
-                tint = BluePrimary
-            )
+            if (notAction == false) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_serving),
+                    contentDescription = stringResource(
+                        id = R.string.serving
+                    ),
+                    tint = BluePrimary
+                )
+            }
         }
     }
 }

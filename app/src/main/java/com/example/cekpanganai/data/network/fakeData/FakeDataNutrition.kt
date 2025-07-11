@@ -66,9 +66,9 @@ object FakeDataNutrition {
     val result = listOf(
         DataItemNutrition(
             color = ColestrolPrimary,
-            label = R.string.colestrol,
+            label = R.string.cholesterol,
             score = "12",
-            unit = "mg"
+            unit = "mg",
         ),
         DataItemNutrition(
             color = GlukosaPrimary,
@@ -84,13 +84,13 @@ object FakeDataNutrition {
         ),
         DataItemNutrition(
             color = CaliumPrimary,
-            label = R.string.calium,
+            label = R.string.potassium,
             score = "12",
             unit = "mg"
         ),
         DataItemNutrition(
             color = ColestrolPrimary,
-            label = R.string.colestrol,
+            label = R.string.cholesterol,
             score = "12",
             unit = "mg"
         ),
@@ -108,7 +108,7 @@ object FakeDataNutrition {
         ),
         DataItemNutrition(
             color = CaliumPrimary,
-            label = R.string.calium,
+            label = R.string.potassium,
             score = "12",
             unit = "mg"
         )

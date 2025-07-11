@@ -29,11 +29,16 @@
 
     <string name="profile">Profil</string>
     <string name="current_day">Hari Ini</string>
+    <string name="last_3_days">3 Hari</string>
+    <string name="last_week">7 Hari</string>
+    <string name="last_month">1 Bulan</string>
     <string name="h4_dashboard">, rencana kesehatan yang lebih baik sudah siap!</string>
 
     <string name="dashboard">Beranda</string>
     <string name="detect">Deteksi</string>
     <string name="history">Riwayat</string>
+    <string name="history_detail">Rincian Riwayat</string>
+    <string name="show_all">Lihat Detail</string>
     <string name="result">Hasil Deteksi</string>
     <string name="calorie">Kalori</string>
     <string name="score_calorie">Jumlah Kalori</string>
@@ -43,11 +48,14 @@
     <string name="fatty">Lemak</string>
     <string name="fiber">Serat</string>
 
-    <string name="micronutrien">Kandungan Mikronutrien</string>
-    <string name="colestrol">Kolestrol</string>
+    <string name="micronutrien">Kandungan Gizi Lainnya</string>
+    <string name="saturatedFat">Lemak Jenuh</string>
+    <string name="polyunsaturatedFat">Lemak Tak Jenuh Ganda</string>
+    <string name="monounsaturatedFat">Lemak Tak Jenuh Tunggal</string>
+    <string name="cholesterol">Kolestrol</string>
     <string name="glukosa">Gula</string>
     <string name="sodium">Sodium</string>
-    <string name="calium">Kalium</string>
+    <string name="potassium">Kalium</string>
 
     <string name="edit">Ubah</string>
     <string name="serving">Serving</string>
@@ -58,16 +66,30 @@
     <string name="total_nutrition">Total Nutrisi</string>
     <string name="total">Total</string>
 
+    <string name="edit_food">Perbarui Jenis Makanan</string>
     <string name="edit_name">Perbarui Nama</string>
     <string name="title_name">Judul Makanan</string>
     <string name="title_portion">Perbarui Porsi</string>
+    <string name="add_food">Tambah Jenis Makanan</string>
     <string name="description_name">Deskripsi Makanan</string>
+    <string name="not_found_database">Data tidak ditemukan di dalam database sehingga diperlukan pencarian lebih lanjut. Nyalakan koneksi internet anda.</string>
 
     <string name="edit_bmi">Hitung BMI</string>
+    <string name="underweight">Kekurangan Berat Badan</string>
+    <string name="normal">Normal (Ideal)</string>
+    <string name="overweight">Kelebihan Berat Badan</string>
+    <string name="obese">Obesitas</string>
     <string name="close">Keluar</string>
     <string name="description_process_detect">Gambar Anda sedang di proses oleh sistem. Tetap di lama ini sampai proses selesai </string>
 
+    <string name="questions_delete">Apakah Anda Ingin Menghapus Jenis Makanan ini?</string>
+    <string name="delete">Hapus Item</string>
+    <string name="dont_save">Batal</string>
     <string name="navigate_back">Kembali</string>
 
-    <string name="upload_from_gallery">Upload dari galeri</string>
+    <string name="upload_from_gallery">Unggah dari Galeri</string>
+    <string name="edit_image">Edit Gambar</string>
+    <string name="capture_image">Ambil dari Kamera</string>
+
+    <string name="name_label">Nama Label</string>
 </resources>

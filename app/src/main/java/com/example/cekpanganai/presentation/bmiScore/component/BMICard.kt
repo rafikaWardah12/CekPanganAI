@@ -1,5 +1,8 @@
 package com.example.cekpanganai.presentation.bmiScore.component
 
+import android.icu.text.DecimalFormat
+import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,13 +14,18 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.cekpanganai.R
+import com.example.cekpanganai.presentation.profile.ProfileViewModel
 import com.example.cekpanganai.ui.utils.Padding
 import com.example.cekpanganai.ui.utils.Spacing
 import com.example.cekpanganai.ui.theme.GreenSecondary
@@ -26,7 +34,17 @@ import com.example.cekpanganai.ui.theme.TextPrimary
 import com.example.cekpanganai.ui.theme.TextSecondary
 
 @Composable
-fun BMICard(modifier: Modifier = Modifier) {
+fun BMICard(
+    modifier: Modifier = Modifier,
+    profileViewModel: ProfileViewModel = hiltViewModel(LocalContext.current as ComponentActivity),
+) {
+    val result by profileViewModel.userState.collectAsState()
+    val height = result.userById?.height
+    val weight = result.userById?.weight
+    val bmi = result.userById?.bmi
+
+    val bmiCategory by profileViewModel.bmiState.collectAsState()
+
     Card(
         modifier.fillMaxWidth(),
         border = BorderStroke(1.dp, Outline),
@@ -47,17 +65,19 @@ fun BMICard(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.spacedBy(Spacing.medium)
             ) {
                 Text(
-                    text = "19.8",
+                    text = DecimalFormat("#.##").format(bmi ?: 0.0),
                     style = MaterialTheme.typography.headlineLarge,
                     color = TextPrimary,
                     fontWeight = FontWeight.Bold
                 )
-                Text(
-                    text = "Berat Badan Normal",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = GreenSecondary,
-                    fontWeight = FontWeight.Medium
-                )
+                bmiCategory.category?.let {
+                    Text(
+                        text = stringResource(id = it.labelResId),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = GreenSecondary,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
             }
             Column(verticalArrangement = Arrangement.spacedBy(Spacing.extraSmall)) {
                 Row(
@@ -71,10 +91,11 @@ fun BMICard(modifier: Modifier = Modifier) {
                         color = TextSecondary
                     )
                     Text(
-                        text = "45 Cm",
+                        text = "$height Cm",
                         style = MaterialTheme.typography.bodySmall,
                         color = TextSecondary
                     )
+                    Log.d("bmi", "Berikut merupakan height: $height dan weight: $weight")
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -87,7 +108,7 @@ fun BMICard(modifier: Modifier = Modifier) {
                         color = TextSecondary
                     )
                     Text(
-                        text = "50 Kg",
+                        text = "$weight Kg",
                         style = MaterialTheme.typography.bodySmall,
                         color = TextSecondary
                     )

@@ -1,5 +1,6 @@
 package com.example.cekpanganai.common.navigation_utils
 
+import android.util.Log
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import javax.inject.Inject
@@ -50,7 +51,8 @@ class AppNavigatorImpl @Inject constructor() : AppNavigator {
         inclusive: Boolean,
         isSingleTop: Boolean
     ) {
-        navigationChannel.trySend(
+        Log.d("AppNavigator", "tryNavigateTo route=$route")
+        val result = navigationChannel.trySend(
             NavigationIntent.NavigateTo(
                 route = route,
                 popUpToRoute = popUpToRoute,
@@ -58,5 +60,16 @@ class AppNavigatorImpl @Inject constructor() : AppNavigator {
                 isSingleTop = isSingleTop
             )
         )
+        Log.d("AppNavigator", "trySend result: ${result.isSuccess}")
+        
+        ///LAMAAA
+//        navigationChannel.trySend(
+//            NavigationIntent.NavigateTo(
+//                route = route,
+//                popUpToRoute = popUpToRoute,
+//                inclusive = inclusive,
+//                isSingleTop = isSingleTop
+//            )
+//        )
     }
 }

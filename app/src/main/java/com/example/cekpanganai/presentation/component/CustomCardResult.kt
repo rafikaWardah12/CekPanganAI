@@ -47,10 +47,11 @@ import com.example.cekpanganai.ui.utils.LocalElevations
 @Composable
 fun CustomCardResult(
     modifier: Modifier = Modifier,
-    header: @Composable ColumnScope.() -> Unit = {}
+    header: @Composable ColumnScope.() -> Unit = {},
+    itemsShow: List<DataItemNutrition>
 ) {
     var showFullInfo by remember { mutableStateOf(false) }
-    val itemsShow = if (showFullInfo) FakeDataNutrition.result else FakeDataNutrition.result.take(3)
+    val itemsShow = if (showFullInfo) itemsShow else itemsShow.take(3)
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -67,7 +68,7 @@ fun CustomCardResult(
                     color = item.color,
                     label = item.label,
                     score = item.score,
-                    unit = "KG"
+                    unit = item.unit
                 )
             }
             Icon(
@@ -87,6 +88,6 @@ fun CustomCardResult(
 @Composable
 private fun test() {
     CekPanganAITheme {
-        CustomCardResult(header = { HeaderResult(label = "Fika", serving = "19", onClick = {}) })
+        CustomCardResult(header = { HeaderResult(label = "Fika", serving = "19", onClickFood = {}, onClickPortion = {}) }, itemsShow = emptyList())
     }
 }

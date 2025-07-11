@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.example.cekpanganai.ui.utils.Padding
 import com.example.cekpanganai.ui.utils.Spacing
 import com.example.cekpanganai.ui.theme.CekPanganAITheme
+import com.example.cekpanganai.ui.theme.ErrorColor
 import com.example.cekpanganai.ui.theme.GreenPrimary
 import com.example.cekpanganai.ui.theme.TextButton
 
@@ -56,7 +57,7 @@ fun CustomButton(
         border = if (isOutline) BorderStroke(1.dp, GreenPrimary) else null,
         colors = ButtonDefaults.buttonColors(
             containerColor = buttonColor
-                ?: if (isOutline) Color.Transparent else if (isWarning) Color.Red else GreenPrimary,
+                ?: if (isOutline) Color.Transparent else if (isWarning) ErrorColor else GreenPrimary,
             contentColor = contentColor ?: if (isOutline) GreenPrimary else TextButton
         )
     ) {
@@ -68,7 +69,10 @@ fun CustomButton(
             CompositionLocalProvider(value = LocalContentColor provides Color.Unspecified) {
                 leadingIcon()
             }
-            Text(text = text, style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold))
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+            )
             CompositionLocalProvider(value = LocalContentColor provides Color.Unspecified) {
                 trailingIcon()
             }

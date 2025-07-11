@@ -10,5 +10,6 @@ import javax.inject.Inject
 class BMIScoreViewModel @Inject constructor(
     private val appNavigator: AppNavigator
 ) : ViewModel() {
+    fun onNavigateBack() = appNavigator.tryNavigateBack(Destination.FormProfileScreen())
     fun onNavigateToDashboard() = appNavigator.tryNavigateTo(Destination.DashboardScreen())
 }

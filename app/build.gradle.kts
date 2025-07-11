@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    alias(libs.plugins.kapt)
+    //    alias(libs.plugins.kapt)
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.cekpanganai"
-        minSdk = 24
+        minSdk = 26
 //        targetSdk = 34
         targetSdk = 34
         versionCode = 1
@@ -43,6 +43,8 @@ android {
     }
     buildFeatures {
         compose = true
+        mlModelBinding = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -65,6 +67,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.icon)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.gpu)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -103,8 +107,31 @@ dependencies {
     implementation(libs.androidx.camera.mlkit)
     implementation(libs.androidx.camera.extensions)
     implementation(libs.accompanist.permissions)
+    implementation(libs.kotlinx.coroutines.guava)
+    implementation(libs.google.guava)
 
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
+
+    //Room
+    implementation(libs.room.runtime)
+//    ksp(libs.room.compiler) // or annotationProcessor if using Java
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation(libs.room.ktx)
+    implementation(libs.room.rxjava2)
+    implementation(libs.room.rxjava3)
+    implementation(libs.room.guava)
+    testImplementation(libs.room.testing)
+    implementation(libs.room.paging)
+
+    implementation("com.aventrix.jnanoid:jnanoid:2.0.0")
+
+    // Tensorflow
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.2")
+
+    implementation("co.yml:ycharts:2.1.0")
+    implementation("com.github.yalantis:ucrop:2.2.9")
+
 }

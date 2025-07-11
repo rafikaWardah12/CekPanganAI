@@ -27,11 +27,13 @@ import com.example.cekpanganai.ui.theme.BluePrimary
 import com.example.cekpanganai.ui.theme.CekPanganAITheme
 import com.example.cekpanganai.ui.theme.Outline
 import com.example.cekpanganai.ui.theme.TextPrimary
+import com.example.cekpanganai.ui.utils.DateRange
 
 @Composable
 fun CardMicronutrien(
     modifier: Modifier = Modifier,
-    microItem: List<DataItemNutrition> = emptyList()
+    microItem: List<DataItemNutrition> = emptyList(),
+    selectedRange: String
 ) {
     Card(
         modifier.fillMaxWidth(),
@@ -46,7 +48,7 @@ fun CardMicronutrien(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.micronutrien),
+                text = stringResource(id = R.string.micronutrien) + " " + selectedRange,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Medium,
                 color = TextPrimary,
@@ -68,15 +70,15 @@ fun CardMicronutrien(
 @Composable
 private fun test() {
     CekPanganAITheme {
-        CardMicronutrien(
-            microItem = listOf(
-                DataItemNutrition(
-                    label = R.string.save,
-                    color = BluePrimary,
-                    score = "40",
-                    unit = "mg"
-                )
-            ),
-        )
+//        CardMicronutrien(
+//            microItem = listOf(
+//                DataItemNutrition(
+//                    label = R.string.save,
+//                    color = BluePrimary,
+//                    score = "40",
+//                    unit = "mg"
+//                )
+//            ),
+//        )
     }
 }

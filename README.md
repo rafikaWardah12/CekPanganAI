@@ -3,10 +3,10 @@
 
 ## Preview <a name="Preview"></a>
 <div style="display:flex;">
-     <img alt="Preview" title="Preview" width="" src="images/1.jpg" />
-     <img alt="Preview" title="Preview" width="" src="images/2.jpg" />
-     <img alt="Preview" title="Preview" width="" src="images/3.jpg" />
-     <img alt="Preview" title="Preview" width="" src="images/4.jpg" />
+     <img alt="Preview" title="Preview" width="" src="Images/1.jpg" />
+     <img alt="Preview" title="Preview" width="" src="Images/2.jpg" />
+     <img alt="Preview" title="Preview" width="" src="Images/3.jpg" />
+     <img alt="Preview" title="Preview" width="" src="Images/4.jpg" />
 </div>
 
 ## Features <a name="Feature"></a>

@@ -9,6 +9,10 @@
      <img alt="Preview" title="Preview" width="" src="Images/4.jpg" />
 </div>
 
+## Documentation <a name="documentation"></a>
+* Design UI/UX : <a href="https://www.figma.com/design/TA624cpxZ1zyE8LJE5PWoD/CekPanganAI?node-id=1-3289&t=4gPxCeD8yJ5eBMQF-1" target="_blank">Figma CekPanganAI</a>
+* Demo App : <a href="https://youtu.be/S1CrvC9wqts">CekPanganAI</a>
+
 ## Features <a name="Feature"></a>
 - Provides a food detection feature by capturing photos directly or uploading images from the gallery.
 - Requires an input image of food for the detection process.

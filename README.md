@@ -1,6 +1,14 @@
 # CekPanganAI
  **CekPanganAI** is a food detection application designed to help control eating habits by calculating calories, macronutrients, and micronutrients in both grams and servings. The detection model is developed using YOLO11 with 39 food classes, utilizing 15,136 images and 20,191 annotations obtained through web scraping and the Roboflow platform. The application is built with a tech stack of **Jetpack Compose**, **XML**, and **TensorFlow Lite** to ensure optimal performance on mobile devices.
 
+## Preview <a name="Preview"></a>
+<div style="display:flex;">
+     <img alt="Preview" title="Preview" width="" src="images/1.jpg" />
+     <img alt="Preview" title="Preview" width="" src="images/2.jpg" />
+     <img alt="Preview" title="Preview" width="" src="images/3.jpg" />
+     <img alt="Preview" title="Preview" width="" src="images/4.jpg" />
+</div>
+
 ## Features <a name="Feature"></a>
 - Provides a food detection feature by capturing photos directly or uploading images from the gallery.
 - Requires an input image of food for the detection process.
